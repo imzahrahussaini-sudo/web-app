@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amroma Cafe – Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">☕</span>
+      <div>
+        <h1>Amroma</h1>
+        <p>Fresh coffee, warm moments</p>
+      </div>
+    </div>
+    <div class="tools">
+      <input type="search" id="search" placeholder="Search items…" aria-label="Search items">
+      <button type="button" id="addBtn" class="add-btn">+ Add Item</button>
+    </div>
+  </header>
+
+  <main class="dashboard">
+
+    <!-- Summary cards -->
+    <section class="stats">
+      <div class="stat"><span id="statTotal">0</span><small>Total Items</small></div>
+      <div class="stat"><span id="statCoffee">0</span><small>Coffee</small></div>
+      <div class="stat"><span id="statCafe">0</span><small>Cafe Items</small></div>
+    </section>
+
+    <!-- Filter tabs -->
+    <nav class="tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="coffee">Coffee</button>
+      <button class="tab" data-filter="cafe">Cafe Items</button>
+    </nav>
+
+    <!-- Items grid (filled by script) -->
+    <section id="grid" class="grid"></section>
+    <p id="empty" class="empty" hidden>No items found.</p>
+  </main>
+
+  <!-- Popup -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+      <button class="close" id="closeBtn" aria-label="Close">&times;</button>
+
+      <div class="gallery">
+        <div class="main-image" id="mainImage"></div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <div class="details">
+        <span class="badge" id="mBadge"></span>
+        <h2 id="mTitle"></h2>
+        <p id="mDesc"></p>
+        <div class="price" id="mPrice"></div>
+        <button type="button" id="mDelete" class="delete-btn" hidden>Delete this item</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add item popup -->
+  <div id="addModal" class="modal" hidden>
+    <div class="add-box" role="dialog" aria-modal="true" aria-labelledby="addTitle">
+      <button class="close" id="addClose" type="button" aria-label="Close">&times;</button>
+      <h2 id="addTitle">Add New Item</h2>
+      <form id="addForm">
+        <div class="field-row">
+          <label>Item name
+            <input id="fName" type="text" placeholder="e.g. Tiramisu" required>
+          </label>
+          <label>Category
+            <select id="fType">
+              <option value="coffee">Coffee</option>
+              <option value="cafe">Cafe Item</option>
+            </select>
+          </label>
+          <label>Emoji (optional)
+            <input id="fEmoji" type="text" maxlength="4" placeholder="🍰">
+          </label>
+        </div>
+        <p class="hint">Add up to 3 flavours. Photos are optional.</p>
+        <div id="flavourBlocks"></div>
+        <button type="submit" class="save-btn">Save Item</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
